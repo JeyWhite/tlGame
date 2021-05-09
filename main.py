@@ -1,6 +1,7 @@
 import numpy as np
 import os
 from msvcrt import getch
+import render
 
 WALL: int = 10
 EMPTY: int = 0
@@ -118,10 +119,8 @@ def get_button():
 
 
 def game_cycle(level):
-    game_on = True
-
-    while game_on:
-        game_render(level.copy())
+    while BOX in level:
+        render.game_render(level.copy())
 
         command = get_button()
         os.system("cls")
@@ -129,8 +128,12 @@ def game_cycle(level):
         cur_pos = get_pos(level)
         if check_to_move(level, command, cur_pos, 1):
             level = move(level, command, cur_pos, 1)
-        game_on = BOX in level
     return print("Win")
+
+
+def get_Level():
+    x = np.genfromtxt(r"C:\Users\PrimaryUser\Documents\levels\1 .txt", dtype=int, delimiter=" ", filling_values=10)
+    return x
 
 
 if __name__ == '__main__':
@@ -144,8 +147,3 @@ if __name__ == '__main__':
     ])
     os.system("cls")
     game_cycle(cur_level)
-    # print(cur_level)
-    # print(type(cur_level))
-    # os.system("cls")
-    # print(np.where(cur_level == UNIT))
-    # print()
