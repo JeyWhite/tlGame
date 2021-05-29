@@ -136,7 +136,7 @@ def get_Level():
     return x
 
 
-if __name__ == '__main__':
+def main():
     cur_level = np.array([
         [10, 10, 10, 10, 10, 10],
         [10, 0, 0, 0, 0, 10],
@@ -147,3 +147,7 @@ if __name__ == '__main__':
     ])
     os.system("cls")
     game_cycle(cur_level)
+
+
+if __name__ == '__main__':
+    main()
